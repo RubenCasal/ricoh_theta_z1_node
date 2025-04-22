@@ -86,13 +86,16 @@ Before launching the node, you need to manually switch the camera to UVC (live s
 2. **Power on** the camera using the power button.
 3. **Press the MODE button** repeatedly until you see a small `LIVE` icon on the screen.
 
-- The icon indicates that the camera is ready to stream in UVC mode.
+- The icon indicates that the camera is ready to stream in UVC mode
+  
 <p align="center">
-<img src="./readme_images/live_mode.jpg" alt="Original Bounding Box" width="400">
+<img src="./readme_images/live_mode.jpg" alt="Live Mode" width="300">
 </p>
+
 - When streaming is active, a **larger `LIVE` icon** will appear (see below).
+  
 <p align="center">
-<img src="./readme_images/activated_live_mode.jpg" alt="Original Bounding Box" width="400">
+<img src="./readme_images/activated_live_mode.jpg" alt="Activated Live Mode" width="300">
 </p>
 
 ---
