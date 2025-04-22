@@ -39,7 +39,7 @@ make && sudo make install
 
 ```bash
 cd ~/ros2_ws/src
-git clone https://github.com/youruser/ricoh_theta_ros2.git
+git clone https://github.com/RubenCasal/ricoh_theta_z1_node.git
 cd ..
 colcon build --packages-select ricoh_theta
 source install/setup.bash
