@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 project(ricoh_theta)
 
-# Enable C++17
-add_compile_options(-Wall -Wextra -Wpedantic -std=c++17)
 
 # ROS 2 dependencies
 find_package(ament_cmake REQUIRED)
@@ -84,5 +82,12 @@ install(TARGETS theta_node
 install(DIRECTORY include/
   DESTINATION include/
 )
+# === Install Python package ===
+ament_python_install_package(${PROJECT_NAME})
+#  Install python executables
+install(PROGRAMS
+  scripts/detector_node.py 
+  DESTINATION share/${PROJECT_NAME})
+
 
 ament_package()
