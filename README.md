@@ -1,4 +1,4 @@
-# Ricoh THETA Z1 ROS 2 Node
+# Ricoh THETA Z1 ROS 2 Driver
 
 This package provides a ROS 2 node (`theta_driver::ThetaDriver`) to stream video from the **Ricoh THETA Z1** in dual-fisheye UVC mode, decode it via GStreamer, and publish the image to ROS 2 topics.
 
@@ -78,5 +78,22 @@ ros2 run ricoh_theta theta_node --ros-args -p use4k:=true -p camera_frame:=theta
 
 ---
 
+## How to Enable Live Streaming Mode on the THETA Z1
 
+Before launching the node, you need to manually switch the camera to UVC (live streaming) mode:
+
+1. **Connect the THETA Z1 via USB** to your computer.
+2. **Power on** the camera using the power button.
+3. **Press the MODE button** repeatedly until you see a small `LIVE` icon on the screen.
+
+- The icon indicates that the camera is ready to stream in UVC mode.
+<p align="center">
+<img src="./readme_images/live_mode.jpg" alt="Original Bounding Box" width="400">
+</p>
+- When streaming is active, a **larger `LIVE` icon** will appear (see below).
+<p align="center">
+<img src="./readme_images/activated_live_mode.jpg" alt="Original Bounding Box" width="400">
+</p>
+
+---
 
