@@ -1,4 +1,4 @@
-# Ricoh THETA Z1 ROS 2 Driver
+# Ricoh THETA Z1 ROS 2 Node
 
 This package provides a ROS 2 node (`theta_driver::ThetaDriver`) to stream video from the **Ricoh THETA Z1** in dual-fisheye UVC mode, decode it via GStreamer, and publish the image to ROS 2 topics.
 
