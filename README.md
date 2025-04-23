@@ -22,7 +22,8 @@ sudo apt install \
   libgstreamer-plugins-bad1.0-dev \
   libglib2.0-dev \
   libusb-1.0-0-dev \
-  libopencv-dev
+  libopencv-dev \
+  gstreamer1.0-vaapi
 ```
 
 ### 2. libuvc (if not installed via apt)
@@ -99,4 +100,33 @@ Before launching the node, you need to manually switch the camera to UVC (live s
 </p>
 
 ---
+
+## ⚙️ Optional: Enable GPU-accelerated decoding with `nvh264dec`
+
+To reduce latency and improve FPS, you can enable GPU decoding with NVIDIA's NVDEC:
+
+### 1. Install VAAPI support:
+
+```bash
+sudo apt install gstreamer1.0-vaapi
+```
+
+### 2. Modify pipeline in `ricoh_theta_node.cpp` (around line 123):
+
+```cpp
+pipeline_ = 
+    "appsrc name=ap is-live=true do-timestamp=true format=time ! queue ! "
+    "h264parse ! nvh264dec ! videoconvert n_threads=8 ! video/x-raw,format=RGB ! "
+    "appsink name=appsink emit-signals=true sync=false max-buffers=1 drop=true";
+```
+
+### ✅ Fallback for CPU decoding:
+
+```cpp
+pipeline_ =
+ "appsrc name=ap ! queue ! h264parse ! queue ! "
+ "decodebin ! queue ! videoconvert n_threads=8 ! queue ! video/x-raw,format=RGB ! appsink name=appsink emit-signals=true";
+```
+
+This change leverages GPU for H.264 decoding, significantly reducing latency on compatible systems.
 
